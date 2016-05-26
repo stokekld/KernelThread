@@ -2,6 +2,7 @@
 #include <linux/kernel.h>
 #include <linux/init.h>
 #include <linux/kthread.h>
+#include <linux/sched.h>
 
 struct task_struct *task;
 
