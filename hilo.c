@@ -15,7 +15,7 @@ int hilo_init(void)
 {
 	int data = 100;
 	printk(KERN_INFO "Hilo:: Se cargo el modulo\n");
-	task = kthread_run(&hilo_function,(void *)data,"Hilo");
+	task = kthread_run(&hilo_function,(void *) &data,"Hilo");
 	return 0;
 }
 
