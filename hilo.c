@@ -1,4 +1,3 @@
-#include <unistd.h>
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/init.h>
@@ -12,7 +11,7 @@ int hilo_function(void *data)
 	while(1)
 	{
 		printk(KERN_INFO "Hilo:: Saludos desde funcion del hilo\n");
-		sleep(2);
+		schedule();
 	}
 	return 0;
 }
