@@ -1,3 +1,4 @@
+#include <unistd.h>
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/init.h>
@@ -8,6 +9,11 @@ struct task_struct *task;
 int hilo_function(void *data)
 {
 	printk(KERN_INFO "Hilo:: Ejecutando hilo\n");
+	while(1)
+	{
+		printk(KERN_INFO "Hilo:: Saludos desde funcion del hilo\n");
+		sleep(2);
+	}
 	return 0;
 }
 
