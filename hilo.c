@@ -1,16 +1,28 @@
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/init.h>
+#include <linux/kthread.h>
+
+struct task_struct *task;
+
+int hilo_function(void *data)
+{
+	printk(KERN_INFO "Hilo:: Ejecutando hilo\n");
+	return 0;
+}
 
 int hilo_init(void)
 {
-	printk(KERN_INFO "Se cargo mi module\n");
+	int data = 100;
+	printk(KERN_INFO "Hilo:: Se cargo el modulo\n");
+	task = kthread_run(&hilo_function,(void *)data,"Hilo");
 	return 0;
 }
 
 void hilo_cleanup(void)
 {
-    printk(KERN_INFO "Se libero mi module\n");
+	kthread_stop(task);
+    printk(KERN_INFO "Hilo:: Se libero el modulo\n");
 }
 
 module_init(hilo_init);
