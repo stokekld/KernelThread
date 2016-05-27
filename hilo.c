@@ -9,9 +9,8 @@ struct task_struct *task;
 int hilo_function(void *data)
 {
 	printk(KERN_INFO "Hilo:: Ejecutando hilo\n");
-	while(1)
+	while(!kthread_should_stop())
 	{
-		printk(KERN_INFO "Hilo:: Saludos desde funcion del hilo\n");
 		schedule();
 	}
 	return 0;
